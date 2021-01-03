@@ -29,6 +29,7 @@ class Question(models.Model):
 
 class Submission(models.Model):
     email = models.CharField(max_length=150) 
+    answer = models.CharField(max_length=150) 
     correct = models.BooleanField()
     question = models.ForeignKey(Question, on_delete=models.CASCADE, blank=True, null=True)
 
