@@ -23,5 +23,6 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     #path('', views.index),
     path('api/resources/', include('resources.urls')),
+    path('api/codechallenges/', include('codechallenges.urls')),
     path('admin/', admin.site.urls),
 ]
