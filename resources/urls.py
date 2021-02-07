@@ -12,5 +12,7 @@ urlpatterns = [
     #url(r'^jobpostings/(?P<pk>[0-9]+)/$', views.JobPostingDetail.as_view()),
     path('jobpostings/', views.JobPostingList),
     path('jobpostings/<int:pk>/', views.JobPostingDetails),
+    path('resources/', views.ResourceList),
+    path('resources/<int:pk>/', views.ResourceDetails),
     #path('', include(router.urls)),
 ]

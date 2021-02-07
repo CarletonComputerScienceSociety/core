@@ -14,3 +14,24 @@ class JobPosting(models.Model):
         ),
         max_length=1
     )
+
+class Resource(models.Model):
+    title = models.CharField(max_length=150)
+    description = models.CharField(max_length=300)
+    category = models.CharField(max_length=150)
+    resource_type = models.CharField(choices=(
+            ('study', "study"),
+            ('award', "award"),
+            ('event', "event"),
+        ),
+        max_length=5
+    )
+    url = models.CharField(max_length=300)
+    found_date = models.DateField()
+    status = models.CharField(choices=(
+            ('s', "suggested"),
+            ('p', "public"),
+            ('e', "expired"),
+        ),
+        max_length=1
+    )

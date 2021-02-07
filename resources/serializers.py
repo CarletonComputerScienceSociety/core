@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from resources.models import JobPosting
+from resources.models import JobPosting, Resource
 
 class JobPostingSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,3 +10,8 @@ class JobPostingCreateSerializer(serializers.ModelSerializer): # should only be 
     class Meta:
         model = JobPosting
         fields = ("title", "url", "company", "found_date", "country", "status")
+
+class ResourceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Resource
+        fields = ("title", "description", "category", "resource_type", "url", "found_date")
