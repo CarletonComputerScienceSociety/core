@@ -1,25 +1,32 @@
 version: "3.9"
    
 services:
-  db:
-    image: postgres
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+  ccss_resources_db:
+    image: postgres:12-alpine
+    environment: 
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: 1234
+        POSTGRES_DB: ccss_resources
+    volumes:
+      - ccss_resources_data:/var/lib/postgresql/data
     networks:
-      - app
-  web:
+        - app
+
+  ccss_resources:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
       - "8001:8000"
     depends_on:
-      - db
+      - ccss_resources_db
     networks:
       - app
+
+volumes: 
+  ccss_resources_data:
+
 networks:
   app:
-      driver: bridge
+    driver: bridge
