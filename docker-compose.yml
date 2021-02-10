@@ -13,8 +13,9 @@ services:
         - app
 
   ccss_resources:
-    build: .
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
     volumes:
       - .:/code
     ports:
@@ -24,7 +25,7 @@ services:
     networks:
       - app
 
-volumes: 
+volumes:
   ccss_resources_data:
 
 networks:
