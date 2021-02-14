@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'codechallenges',
     'resources',
     'rest_framework',
+    'django_celery_beat'
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+CELERY_IMPORTS = ('core.tasks')

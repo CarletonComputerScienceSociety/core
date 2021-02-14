@@ -12,16 +12,37 @@ services:
     networks:
         - app
 
+  rabbitmq:
+    image: 'rabbitmq'
+    ports:
+        - '5672:5672'
+    networks:
+        - app
+
   ccss_resources:
-    build:
-      context: .
-      dockerfile: ./docker/Dockerfile
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000 && celery -A core worker -l info"
     volumes:
       - .:/code
     ports:
       - "8001:8000"
     depends_on:
       - ccss_resources_db
+      - rabbitmq
+      - ccss_resources_jobs
+    networks:
+      - app
+
+  ccss_resources_jobs:
+    build: .
+    command: bash -c "celery -A core worker --beat --scheduler django --loglevel=info"
+    volumes:
+      - .:/code
+    ports:
+      - "8002:8000"
+    depends_on:
+      - ccss_resources_db
+      - rabbitmq
     networks:
       - app
 
