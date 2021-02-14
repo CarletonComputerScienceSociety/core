@@ -1,17 +1,20 @@
 from django.contrib import admin
 
-from .models import JobPosting, Resource
+from .models import JobPosting, Resource, ResourcePage, ResourcePageSection
 
-# admin.site.site_title = "Carleton Computer Science Society"
-# admin.site.index_title = "Carleton Computer Science Society"
 admin.site.site_header = "Carleton Computer Science Society"
 
-#admin.site.register(JobPosting)
-@admin.register(JobPosting)
-class CustomerJobPosting(admin.ModelAdmin):
-    list_display = ("title", "company", "found_date", "country", "status")
-
+# @admin.register(JobPosting)
+# class CustomerJobPosting(admin.ModelAdmin):
+#    list_display = ("title", "company", "found_date", "country", "status")
 
 @admin.register(Resource)
 class CustomerResource(admin.ModelAdmin):
-    list_display = ("title", "found_date", "status")
+    list_display = ("title", "found_date", "status", "order", "resource_page_section")
+
+@admin.register(ResourcePage)
+class CustomerResourcePage(admin.ModelAdmin):
+    list_display = ["title"]
+@admin.register(ResourcePageSection)
+class CustomerResourceSection(admin.ModelAdmin):
+    list_display = ("title", "resource_page", "order", "status")

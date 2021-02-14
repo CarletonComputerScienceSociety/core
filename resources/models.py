@@ -15,19 +15,41 @@ class JobPosting(models.Model):
         max_length=1
     )
 
+class ResourcePage(models.Model):
+    title = models.CharField(max_length=75)
+    description = models.TextField(null=True, blank=True)
+
+    def public_sections(self):
+        return ResourcePageSection.objects.filter(status='p')
+
+    def __str__(self): 
+        return self.title 
+
+class ResourcePageSection(models.Model):
+    title = models.CharField(max_length=75)
+    description = models.TextField(null=True, blank=True)
+    order = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    status = models.CharField(choices=(
+            ('p', "public"),
+            ('h', "hidden"),
+        ),
+        max_length=1
+    )
+    resource_page = models.ForeignKey(ResourcePage, related_name='resource_page_sections', on_delete=models.CASCADE, blank=True, null=True)
+
+    def public_resources(self):
+        return Resource.objects.filter(status='p')
+
+    def __str__(self): 
+        return self.title 
+
 class Resource(models.Model):
     title = models.CharField(max_length=150)
-    description = models.CharField(max_length=300)
-    category = models.CharField(max_length=150)
-    resource_type = models.CharField(choices=(
-            ('study', "study"),
-            ('award', "award"),
-            ('event', "event"),
-        ),
-        max_length=5
-    )
-    url = models.CharField(max_length=300)
+    description = models.TextField(null=True, blank=True)
+    url = models.TextField(null=True, blank=True)
     found_date = models.DateField()
+    organization = models.CharField(max_length=50, null=True, blank=True)
+    order = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     status = models.CharField(choices=(
             ('s', "suggested"),
             ('p', "public"),
@@ -35,3 +57,5 @@ class Resource(models.Model):
         ),
         max_length=1
     )
+    resource_page_section = models.ForeignKey(ResourcePageSection, related_name='resources', on_delete=models.CASCADE, blank=True, null=True)
+

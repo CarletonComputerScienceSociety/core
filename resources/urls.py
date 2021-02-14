@@ -14,5 +14,7 @@ urlpatterns = [
     path('jobpostings/<int:pk>/', views.JobPostingDetails),
     path('resources/', views.ResourceList),
     path('resources/<int:pk>/', views.ResourceDetails),
+    path('resources_pages/', views.ResourcePageList),
+    path('resources_pages/<int:pk>/', views.ResourcePageDetails),
     #path('', include(router.urls)),
 ]
