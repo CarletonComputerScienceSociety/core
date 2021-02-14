@@ -8,6 +8,5 @@ from django.core.management.commands import dumpdata
 
 @shared_task
 def backup():
-    print("backup - shared task")
     with open('./backup.json', 'w') as f:
         management.call_command('dumpdata', stdout=f)
