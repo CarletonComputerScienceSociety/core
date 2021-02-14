@@ -23,7 +23,6 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000 && celery -A core worker -l info"
     volumes:
       - .:/code
     ports:
@@ -36,9 +35,7 @@ services:
       - app
 
   ccss_resources_jobs:
-    build:
-      context: .
-      dockerfile: ./docker/Dockerfile
+    build: .
     command: bash -c "celery -A core worker --beat --scheduler django --loglevel=info"
     volumes:
       - .:/code
