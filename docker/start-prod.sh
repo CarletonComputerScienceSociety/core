@@ -1,4 +1,8 @@
+#!/bin/sh
+
 export DJANGO_SETTINGS_MODULE=core.settings.prod
+
+cd /code
 
 python manage.py migrate
 python manage.py collectstatic --noinput

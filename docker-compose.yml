@@ -15,7 +15,7 @@ services:
   ccss_resources:
     build:
       context: .
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./docker/Dockerfile.dev
     volumes:
       - .:/code
     ports:
