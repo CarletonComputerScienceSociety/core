@@ -22,21 +22,22 @@ services:
   ccss_resources:
     build:
       context: .
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./docker/Dockerfile.dev
     volumes:
       - .:/code
     ports:
       - "8001:8000"
     depends_on:
       - ccss_resources_db
-      - rabbitmq
       - ccss_resources_jobs
+      - rabbitmq
     networks:
       - app
 
   ccss_resources_jobs:
-    build: .
-    command: bash -c "celery -A core worker --beat --scheduler django --loglevel=info"
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
     volumes:
       - .:/code
     ports:
