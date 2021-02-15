@@ -20,9 +20,7 @@
 
 ## Context
 
-Core is a Django based application. We choose Django to build out this application because of Django's "app based" structure and Django's preconfigured dashboard system.
-
-The hope is that to avoid having to configure and run several microservices, we can instead create new Django apps.
+Core is a Django based application. We choose Django to build out this application because of Django's "app based" structure and Django's preconfigured dashboard system. The hope is that to avoid having to configure and run several microservices, we can instead create new Django apps.
 
 #### Services
 
