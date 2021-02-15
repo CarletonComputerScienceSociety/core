@@ -10,7 +10,6 @@
 
 ## Table of Contents
 - [Context](#context)
-- [Dependencies](#dependencies)
 - [Setup](#setup)
   - [Local](#local)
   - [Docker](#docker)
@@ -25,7 +24,7 @@ Core is a Django based application. We choose Django to build out this applicati
 
 The hope is that to avoid having to configure and run several microservices, we can instead create new Django apps.
 
-## Dependencies
+### Dependencies
 
  - Django
  - PostgreSQL
