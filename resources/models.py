@@ -20,7 +20,7 @@ class ResourcePage(models.Model):
     description = models.TextField(null=True, blank=True)
 
     def public_sections(self):
-        return ResourcePageSection.objects.filter(status='p')
+        return ResourcePageSection.objects.filter(status='p').order_by('order')
 
     def __str__(self): 
         return self.title 
@@ -38,7 +38,7 @@ class ResourcePageSection(models.Model):
     resource_page = models.ForeignKey(ResourcePage, related_name='resource_page_sections', on_delete=models.CASCADE, blank=True, null=True)
 
     def public_resources(self):
-        return Resource.objects.filter(status='p')
+        return Resource.objects.filter(status='p').order_by('order')
 
     def __str__(self): 
         return self.title 
