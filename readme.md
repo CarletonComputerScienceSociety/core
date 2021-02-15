@@ -25,7 +25,7 @@ The hope is that to avoid having to configure and run several microservices, we 
 
 ## Setup
 
-Docker is the recommended for application setup due to the high number of services required for this project.
+Docker is recommended for application setup due to the high number of services required for this project.
 
 ### Local
 
