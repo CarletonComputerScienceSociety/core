@@ -80,11 +80,15 @@ docker-compose up
 
 The Code Challenges app is used to manage code challenge events.
 
+<br>
+
 <img src="/assets/codechallenges_schema.png" width="800px">
 
 ### Resources
 
 The Resources app controls the dynamic content on the CCSS website. This app was created so volunteers could easily populate the website with resources, links, jobs postings and more.
+
+<br>
 
 <img src="/assets/resources_schema.png" width="800px">
 
