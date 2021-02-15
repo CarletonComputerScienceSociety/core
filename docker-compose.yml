@@ -12,6 +12,13 @@ services:
     networks:
         - app
 
+  rabbitmq:
+    image: 'rabbitmq'
+    ports:
+        - '5672:5672'
+    networks:
+        - app
+
   ccss_resources:
     build:
       context: .
@@ -22,6 +29,22 @@ services:
       - "8001:8000"
     depends_on:
       - ccss_resources_db
+      - ccss_resources_jobs
+      - rabbitmq
+    networks:
+      - app
+
+  ccss_resources_jobs:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - .:/code
+    ports:
+      - "8002:8000"
+    depends_on:
+      - ccss_resources_db
+      - rabbitmq
     networks:
       - app
 
