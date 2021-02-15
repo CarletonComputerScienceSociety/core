@@ -9,13 +9,13 @@
 <hr>
 
 ## Table of Contents
-- [Context](#-Context)
-- [Setup](#-setup)
-  - [Dependencies](-dependencies)
-- [Applications](#-applications)
-  - [Code Challenges](#-code-challenges)
-  - [Resources](#-resources)
-- [Commands](#-commands)
+- [Context](#context)
+- [Setup](#setup)
+  - [Dependencies](#dependencies)
+- [Applications](#applications)
+  - [Code Challenges](#code-challenges)
+  - [Resources](#resources)
+- [Commands](#commands)
 
 ## Context
 
