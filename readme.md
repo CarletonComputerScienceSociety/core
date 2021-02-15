@@ -65,6 +65,12 @@ Start Celery Worker
 celery -A core worker -l info
 ```
 
+Configure Django Environment Settings
+
+```bash
+export DJANGO_SETTINGS_MODULE=core.settings.dev
+```
+
 Setup Django Application
 
 ```bash
