@@ -12,6 +12,8 @@
 - [Context](#context)
 - [Setup](#setup)
   - [Dependencies](#dependencies)
+  - [Local](#local)
+  - [Docker](#docker)
 - [Applications](#applications)
   - [Code Challenges](#code-challenges)
   - [Resources](#resources)
