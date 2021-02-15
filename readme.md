@@ -1,6 +1,6 @@
 <img src="/assets/core_logo.png" width="400px">
 
-**Core is the central application that powers many of our online services.**
+**Core is the central application that powers many of our online services and events.**
 
 <hr>
 
