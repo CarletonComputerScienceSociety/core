@@ -26,7 +26,7 @@ SECRET_KEY = 'h^&r=rzr53wm42ag9!j1$a)kf(0(bkogvon&94gofheke4d((g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['resources.discretemath.ca', 'https://resources.discretemath.ca', 'https://ccss.carleton.ca', 'localhost', '127.0.0.1']
 
 
 # Application definition
