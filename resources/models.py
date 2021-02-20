@@ -20,7 +20,8 @@ class ResourcePage(models.Model):
     description = models.TextField(null=True, blank=True)
 
     def public_sections(self):
-        return ResourcePageSection.objects.filter(status='p').order_by('order')
+        return self.resource_page_sections.filter(status='p').order_by('order')
+        
 
     def __str__(self): 
         return self.title 
@@ -28,6 +29,7 @@ class ResourcePage(models.Model):
 class ResourcePageSection(models.Model):
     title = models.CharField(max_length=75)
     description = models.TextField(null=True, blank=True)
+    url = models.TextField(null=True, blank=True)
     order = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     status = models.CharField(choices=(
             ('p', "public"),
@@ -38,7 +40,7 @@ class ResourcePageSection(models.Model):
     resource_page = models.ForeignKey(ResourcePage, related_name='resource_page_sections', on_delete=models.CASCADE, blank=True, null=True)
 
     def public_resources(self):
-        return Resource.objects.filter(status='p').order_by('order')
+        return self.resources.filter(status='p').order_by('order')
 
     def __str__(self): 
         return self.title 
