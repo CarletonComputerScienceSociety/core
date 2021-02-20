@@ -20,7 +20,7 @@ class ResourcePageSectionSerializer(serializers.ModelSerializer):
     resources = ResourceSerializer(many=True, required=False, source="public_resources")
     class Meta:
         model = ResourcePageSection
-        fields = ("title", "description", "resources")
+        fields = ("title", "description", "url", "resources")
 
 class ResourcePageSerializer(serializers.ModelSerializer):
     resource_page_sections = ResourcePageSectionSerializer(many=True, required=False, source="public_sections")
