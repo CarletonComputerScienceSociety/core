@@ -4,7 +4,7 @@
 
 <hr>
 
-![CI](https://github.com/CarletonComputerScienceSociety/core/ci/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/CarletonComputerScienceSociety/Core/blob/master/License)
+![CI](https://github.com/CarletonComputerScienceSociety/core/actions/workflows/workflow.yml/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/CarletonComputerScienceSociety/Core/blob/master/License)
 
 <hr>
 
