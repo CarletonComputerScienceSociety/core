@@ -6,14 +6,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('codechallenges', '0002_auto_20210103_1132'),
+        ("codechallenges", "0002_auto_20210103_1132"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='submission',
-            name='answer',
-            field=models.CharField(default='', max_length=150),
+            model_name="submission",
+            name="answer",
+            field=models.CharField(default="", max_length=150),
             preserve_default=False,
         ),
     ]

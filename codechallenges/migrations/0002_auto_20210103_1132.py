@@ -7,18 +7,28 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('codechallenges', '0001_initial'),
+        ("codechallenges", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='question',
-            name='event',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='codechallenges.codechallengeevent'),
+            model_name="question",
+            name="event",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="codechallenges.codechallengeevent",
+            ),
         ),
         migrations.AddField(
-            model_name='submission',
-            name='question',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='codechallenges.question'),
+            model_name="submission",
+            name="question",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="codechallenges.question",
+            ),
         ),
     ]

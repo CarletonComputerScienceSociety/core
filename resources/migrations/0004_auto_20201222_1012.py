@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('resources', '0003_remove_jobposting_expiry_date'),
+        ("resources", "0003_remove_jobposting_expiry_date"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='jobposting',
-            name='title',
+            model_name="jobposting",
+            name="title",
             field=models.CharField(max_length=150),
         ),
     ]

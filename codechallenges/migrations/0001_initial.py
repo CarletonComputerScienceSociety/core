@@ -7,36 +7,65 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='CodeChallengeEvent',
+            name="CodeChallengeEvent",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=150)),
-                ('description', models.TextField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=150)),
+                ("description", models.TextField()),
             ],
         ),
         migrations.CreateModel(
-            name='Question',
+            name="Question",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=150)),
-                ('body', models.TextField()),
-                ('format', models.CharField(choices=[('t', 'text'), ('h', 'html'), ('m', 'mathjax')], max_length=1)),
-                ('answer', models.CharField(max_length=150)),
-                ('release_date', models.DateField()),
-                ('expiration_date', models.DateField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=150)),
+                ("body", models.TextField()),
+                (
+                    "format",
+                    models.CharField(
+                        choices=[("t", "text"), ("h", "html"), ("m", "mathjax")],
+                        max_length=1,
+                    ),
+                ),
+                ("answer", models.CharField(max_length=150)),
+                ("release_date", models.DateField()),
+                ("expiration_date", models.DateField()),
             ],
         ),
         migrations.CreateModel(
-            name='Submission',
+            name="Submission",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('email', models.CharField(max_length=150)),
-                ('correct', models.BooleanField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("email", models.CharField(max_length=150)),
+                ("correct", models.BooleanField()),
             ],
         ),
     ]

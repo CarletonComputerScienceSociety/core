@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('resources', '0001_initial'),
+        ("resources", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='jobposting',
-            name='expiry_date',
+            model_name="jobposting",
+            name="expiry_date",
             field=models.DateField(blank=True, null=True),
         ),
         migrations.AlterField(
-            model_name='jobposting',
-            name='url',
+            model_name="jobposting",
+            name="url",
             field=models.CharField(max_length=300),
         ),
     ]
