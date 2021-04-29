@@ -14,8 +14,8 @@ def backup():
     now = datetime.now()
     timestamp = datetime.timestamp(now)
 
-    if not os.path.isdir('./backups'):
-        os.mkdir('./backups')
+    if not os.path.isdir("./backups"):
+        os.mkdir("./backups")
 
-    with open('./backups/'+str(timestamp)+'.json', 'w') as f:
-        management.call_command('dumpdata', stdout=f)
+    with open("./backups/" + str(timestamp) + ".json", "w") as f:
+        management.call_command("dumpdata", stdout=f)

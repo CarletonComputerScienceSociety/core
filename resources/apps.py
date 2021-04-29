@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class ResourcesConfig(AppConfig):
-    name = 'resources'
+    name = "resources"
     verbose_name = "Resources"

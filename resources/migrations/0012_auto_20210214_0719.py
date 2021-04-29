@@ -7,18 +7,30 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('resources', '0011_auto_20210214_0601'),
+        ("resources", "0011_auto_20210214_0601"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='resource',
-            name='resource_page_section',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='resources', to='resources.resourcepagesection'),
+            model_name="resource",
+            name="resource_page_section",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="resources",
+                to="resources.resourcepagesection",
+            ),
         ),
         migrations.AlterField(
-            model_name='resourcepagesection',
-            name='resource_page',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='resource_page_sections', to='resources.resourcepage'),
+            model_name="resourcepagesection",
+            name="resource_page",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="resource_page_sections",
+                to="resources.resourcepage",
+            ),
         ),
     ]

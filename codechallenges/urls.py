@@ -4,9 +4,9 @@ from rest_framework import routers
 from . import views
 
 urlpatterns = [
-    path('expired/questions/', views.ExpiredQuestionList),
-    path('current/questions/', views.CurrentQuestionList),
-    path('questions/', views.QuestionList),
-    path('submissions/', views.SubmissionList),
-    path('questions/<int:pk>/', views.QuestionDetails),
+    path("expired/questions/", views.ExpiredQuestionList),
+    path("current/questions/", views.CurrentQuestionList),
+    path("questions/", views.QuestionList),
+    path("submissions/", views.SubmissionList),
+    path("questions/<int:pk>/", views.QuestionDetails),
 ]

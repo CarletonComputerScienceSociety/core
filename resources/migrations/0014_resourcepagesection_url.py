@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('resources', '0013_resourcepagesection_status'),
+        ("resources", "0013_resourcepagesection_status"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='resourcepagesection',
-            name='url',
+            model_name="resourcepagesection",
+            name="url",
             field=models.TextField(blank=True, null=True),
         ),
     ]
