@@ -35,13 +35,13 @@ Docker is recommended for application setup due to the high number of services r
 
 ### Non-Docker Setup
 
-1. If you do not have a virtual environment
+### 1. If you do not have a virtual environment
 
 ```bash
 virtualenv venv -p python3
 ```
 
-2. Activate virtual environment
+### 2. Activate virtual environment
 
 ```bash
 source venv/bin/activate
@@ -53,17 +53,17 @@ You will also need to know how to deactivate your virtual environment later, whi
 deactivate
 ```
 
-3. Install Python dependencies
+### 3. Install Python dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Update your Database configuration
+### 4. Update your Database configuration
 
 Currently this application uses a postgres database, but for local development if may be quicker for you to use SQLite.
 
-Open core/settings/base.py
+Open ```core/settings/base.py```
 
 If you would like to use SQLite, uncomment the SQLite config. If you would like to use postgres, enter your postgres information.
 ```
@@ -87,33 +87,31 @@ DATABASES = {
 
 ```
 
-
-
-5. Configure Django Environment Settings
+### 5. Configure Django Environment Settings
 
 ```bash
 export DJANGO_SETTINGS_MODULE=core.settings.dev
 ```
 
-6. Migrate Database
+### 6. Migrate Database
 
 ```bash
 python manage.py migrate
 ```
 
-7. Start Django server
+### 7. Start Django server
 
 ```bash
 python manage.py runserver 0.0.0.0:8000
 ```
 
-8. Start Rabbitmq (optional)
+### 8. Start Rabbitmq (optional)
 
 ```bash
 rabbitmq-server
 ```
 
-9. Start Celery Worker (optional)
+### 9. Start Celery Worker (optional)
 
 ```bash
 celery -A core worker -l info
