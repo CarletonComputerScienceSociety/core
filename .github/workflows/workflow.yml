@@ -1,4 +1,4 @@
-name: CORE application
+name: ci
 
 on: [push]
 
