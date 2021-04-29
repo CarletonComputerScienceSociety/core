@@ -20,8 +20,6 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
-    - name: Configure env settings
-      run: sudo export DJANGO_SETTINGS_MODULE=core.settings.dev
     - uses: actions/checkout@v1
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
