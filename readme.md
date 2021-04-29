@@ -11,8 +11,8 @@
 ## Table of Contents
 - [Context](#context)
 - [Setup](#setup)
-  - [Local](#local)
-  - [Docker](#docker)
+  - [Local](#non-docker-setup)
+  - [Docker](#docker-setup)
 - [Applications](#applications)
   - [Code Challenges](#code-challenges)
   - [Resources](#resources)
