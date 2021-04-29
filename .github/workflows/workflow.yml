@@ -33,6 +33,8 @@ jobs:
         pip install -r requirements.txt
     - name: Run Black Linting
       run: black .
+    - name: Configure env settings
+      run: export DJANGO_SETTINGS_MODULE=core.settings.dev
     - name: Run migrations
       run: python manage.py migrate
     - name: Run tests
