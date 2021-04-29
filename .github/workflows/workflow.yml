@@ -20,6 +20,8 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
+    - name: Configure env settings
+      run: sudo export DJANGO_SETTINGS_MODULE=core.settings.dev
     - uses: actions/checkout@v1
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
@@ -34,7 +36,7 @@ jobs:
     - name: Run Black Linting
       run: black .
     - name: Configure env settings
-      run: export DJANGO_SETTINGS_MODULE=core.settings.dev
+      run: sudo export DJANGO_SETTINGS_MODULE=core.settings.dev
     - name: Run migrations
       run: python manage.py migrate
     - name: Run tests
