@@ -2,6 +2,7 @@ from django.test import TestCase
 from rest_framework.test import APIRequestFactory
 from codechallenges.models import Question, Submission
 from .views import SubmissionList
+
 import datetime
 
 # Create your tests here.
@@ -16,6 +17,7 @@ class SubmissionTestCase(TestCase):
             answer="Yote",
             release_date=datetime.date.today(),
             expiration_date=datetime.date(2022, 4, 29),
+            difficulty="e",
         )
         factory = APIRequestFactory()
 
@@ -61,6 +63,7 @@ class SubmissionTestCase(TestCase):
             answer="Yote",
             release_date=datetime.date.today(),
             expiration_date=datetime.date(2022, 4, 29),
+            difficulty="e",
         )
 
         # Verify question 1 is created
