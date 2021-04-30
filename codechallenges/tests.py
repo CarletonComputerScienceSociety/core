@@ -39,7 +39,7 @@ class SubmissionTestCase(TestCase):
             attempts=5,
         )
 
-        # Verify submission 3 is created
+        # Verify submission 2 is created
         self.assertNotEquals(submission2, None)
 
         # This should fail due to duplicate checking
