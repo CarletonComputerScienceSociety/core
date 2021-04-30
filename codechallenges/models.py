@@ -38,3 +38,10 @@ class Submission(models.Model):
     question = models.ForeignKey(
         Question, on_delete=models.CASCADE, blank=True, null=True
     )
+    attempts = models.IntegerField(default=0)
+
+    class Meta:
+        unique_together = (
+            "email",
+            "question",
+        )
