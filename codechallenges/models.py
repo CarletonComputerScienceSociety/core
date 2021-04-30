@@ -29,7 +29,9 @@ class Question(models.Model):
             ("m", "medium"),
             ("h", "hard"),
         ),
-        max_length=1, null=True, blank=True,
+        max_length=1,
+        null=True,
+        blank=True,
     )
     event = models.ForeignKey(
         CodeChallengeEvent, on_delete=models.CASCADE, blank=True, null=True

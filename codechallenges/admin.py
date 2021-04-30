@@ -6,7 +6,14 @@ from .models import Question, Submission, CodeChallengeEvent
 
 @admin.register(Question)
 class CustomerQuestion(admin.ModelAdmin):
-    list_display = ("title", "body", "answer", "release_date", "expiration_date", "difficulty")
+    list_display = (
+        "title",
+        "body",
+        "answer",
+        "release_date",
+        "expiration_date",
+        "difficulty"
+    )
 
 
 @admin.register(Submission)

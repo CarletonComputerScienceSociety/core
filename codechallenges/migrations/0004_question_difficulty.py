@@ -6,13 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('codechallenges', '0003_submission_answer'),
+        ("codechallenges", "0003_submission_answer"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='question',
-            name='difficulty',
-            field=models.CharField(blank=True, choices=[('e', 'easy'), ('m', 'medium'), ('h', 'hard')], max_length=1, null=True),
+            model_name="question",
+            name="difficulty",
+            field=models.CharField(
+                blank=True,
+                choices=[("e", "easy"), ("m", "medium"), ("h", "hard")],
+                max_length=1,
+                null=True,
+            ),
         ),
     ]

@@ -20,6 +20,27 @@ def SubmissionList(request):
         except Question.DoesNotExist:
             return HttpResponse(status=500)
 
+        # Need to check if submission exists before creating one
+        try:
+            submission = Submission.objects.get(
+                question=data["question"], email=data["email"]
+            )
+            submission.attempts += 1
+
+            if question.answer == data["answer"]:
+                submission.correct = True
+            else:
+                submission.correct = False
+
+            submission.answer = data["answer"]
+            submission.save()
+
+            serializer = SubmissionSerializer(submission)
+
+            return JsonResponse(serializer.data, status=200)
+        except Submission.DoesNotExist:
+            data["attempts"] = 1
+
         if question.answer == data["answer"]:
             data["correct"] = True
         else:
