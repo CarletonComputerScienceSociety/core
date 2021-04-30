@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class CodeChallengeEvent(models.Model):
+class Event(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField()
 
@@ -24,7 +24,7 @@ class Question(models.Model):
     release_date = models.DateField()
     expiration_date = models.DateField()
     event = models.ForeignKey(
-        CodeChallengeEvent, on_delete=models.CASCADE, blank=True, null=True
+        Event, on_delete=models.CASCADE, blank=True, null=True
     )
 
     def __str__(self):
