@@ -24,4 +24,4 @@ class QuestionHiddenSerializer(serializers.ModelSerializer):
 class SubmissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Submission
-        fields = ("email", "correct", "answer", "question")
+        fields = ("email", "correct", "answer", "question", "attempts")

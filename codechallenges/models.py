@@ -23,6 +23,16 @@ class Question(models.Model):
     answer = models.CharField(max_length=150)
     release_date = models.DateField()
     expiration_date = models.DateField()
+    difficulty = models.CharField(
+        choices=(
+            ("e", "easy"),
+            ("m", "medium"),
+            ("h", "hard"),
+        ),
+        max_length=1,
+        null=True,
+        blank=True,
+    )
     event = models.ForeignKey(
         CodeChallengeEvent, on_delete=models.CASCADE, blank=True, null=True
     )

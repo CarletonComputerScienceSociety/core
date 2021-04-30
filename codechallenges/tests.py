@@ -1,11 +1,58 @@
 from django.test import TestCase
+from rest_framework.test import APIRequestFactory
 from codechallenges.models import Question, Submission
+from .views import SubmissionList
 import datetime
 
 # Create your tests here.
 
 
 class SubmissionTestCase(TestCase):
+    def test_submission(self):
+        question1 = Question.objects.create(
+            title="Yeet",
+            body="Blaghjdklahgjfkl",
+            format="t",
+            answer="Yote",
+            release_date=datetime.date.today(),
+            expiration_date=datetime.date(2022, 4, 29),
+        )
+        factory = APIRequestFactory()
+
+        # Makes and verifies successful request (first attempt)
+        attempt1 = factory.post(
+            "/api/codechallenges/submissions/",
+            {
+                "email": "robertbabaev@cmail.carleton.ca",
+                "question": 1,
+                "answer": "Yate",
+            },
+            format="json",
+        )
+        response = SubmissionList(attempt1)
+        self.assertEquals(response.status_code, 201)
+
+        # Verifies submission creation
+        submissions = list(Submission.objects.all())
+        self.assertEquals(submissions[0].attempts, 1)
+
+        # Makes and verifies successful request (second attempt)
+        attempt2 = factory.post(
+            "/api/codechallenges/submissions/",
+            {
+                "email": "robertbabaev@cmail.carleton.ca",
+                "question": 1,
+                "answer": "Yote",
+            },
+            format="json",
+        )
+        response = SubmissionList(attempt2)
+        self.assertEquals(response.status_code, 200)
+
+        # Verifies submission update
+        submissions = list(Submission.objects.all())
+        self.assertEquals(submissions[0].attempts, 2)
+
     def test_unique_together(self):
         question1 = Question.objects.create(
             title="Yeet",
