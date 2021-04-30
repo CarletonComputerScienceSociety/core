@@ -12,6 +12,7 @@ class QuestionSerializer(serializers.ModelSerializer):
             "answer",
             "release_date",
             "expiration_date",
+            "difficulty",
         )
 
 
