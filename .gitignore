@@ -3,3 +3,4 @@ db.sqlite3
 backups
 .ds_store
 core/staticfiles
+venv

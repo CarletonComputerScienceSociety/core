@@ -9,6 +9,16 @@ class CodeChallengeEvent(models.Model):
         return self.title
 
 
+class Category(models.Model):
+    title = models.CharField(max_length=150)
+    body = models.TextField()
+
+    # questions = models.ManyToManyField(Question)  # Django auto-validates duplicates
+
+    def __str__(self):
+        return self.title
+
+
 class Question(models.Model):
     title = models.CharField(max_length=150)
     body = models.TextField()
@@ -37,6 +47,8 @@ class Question(models.Model):
         CodeChallengeEvent, on_delete=models.CASCADE, blank=True, null=True
     )
 
+    categories = models.ManyToManyField(Category)
+
     def __str__(self):
         return self.title
 
@@ -55,13 +67,3 @@ class Submission(models.Model):
             "email",
             "question",
         )
-
-
-class Category(models.Model):
-    title = models.CharField(max_length=150)
-    body = models.TextField()
-
-    questions = models.ManyToManyField(Question)  # Django auto-validates duplicates
-
-    def __str__(self):
-        return self.title

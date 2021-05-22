@@ -1,8 +1,16 @@
 from rest_framework import serializers
-from codechallenges.models import Question, Submission
+from codechallenges.models import Question, Submission, Category
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ["title"]
 
 
 class QuestionSerializer(serializers.ModelSerializer):
+    categories = CategorySerializer(many=True, required=False)
+
     class Meta:
         model = Question
         fields = (
@@ -13,13 +21,24 @@ class QuestionSerializer(serializers.ModelSerializer):
             "release_date",
             "expiration_date",
             "difficulty",
+            "categories",
         )
 
 
 class QuestionHiddenSerializer(serializers.ModelSerializer):
+    categories = CategorySerializer(many=True, required=False)
+
     class Meta:
         model = Question
-        fields = ("title", "body", "format")
+        fields = (
+            "title",
+            "body",
+            "format",
+            "release_date",
+            "expiration_date",
+            "difficulty",
+            "categories",
+        )
 
 
 class SubmissionSerializer(serializers.ModelSerializer):
