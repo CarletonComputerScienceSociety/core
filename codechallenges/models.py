@@ -61,7 +61,7 @@ class Category(models.Model):
     title = models.CharField(max_length=150)
     body = models.TextField()
 
-    questions = models.ManyToManyField(Question) #Django auto-validates duplicates
+    questions = models.ManyToManyField(Question)  # Django auto-validates duplicates
 
     def __str__(self):
         return self.title
