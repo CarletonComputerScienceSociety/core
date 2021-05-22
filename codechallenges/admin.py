@@ -12,7 +12,7 @@ class CustomerQuestion(admin.ModelAdmin):
         "answer",
         "release_date",
         "expiration_date",
-        "difficulty"
+        "difficulty",
     )
 
 
