@@ -37,10 +37,10 @@ class QuestionTestCase(TestCase):
         return super().setUp()
 
     def test_categories(self):
-        self.category1.questions.add(self.question1)  # Added
-        self.category1.questions.add(self.question2)  # Added
-        self.category1.questions.add(self.question1)  # Not Added
-        self.assertEquals(len(self.category1.questions.all()), 2)
+        self.question1.categories.add(self.category1)  # Added
+        self.question1.categories.add(self.category2)  # Added
+        self.question2.categories.add(self.category1)  # Not Added
+        self.assertEquals(len(self.question1.categories.all()), 2)
 
 
 class SubmissionTestCase(TestCase):

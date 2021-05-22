@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Question, Submission, CodeChallengeEvent
+from .models import Question, Submission, CodeChallengeEvent, Category
 
 
 @admin.register(Question)
@@ -24,3 +24,8 @@ class CustomerSubmission(admin.ModelAdmin):
 @admin.register(CodeChallengeEvent)
 class CustomerCodeChallengeEvent(admin.ModelAdmin):
     list_display = ("title", "description")
+
+
+@admin.register(Category)
+class CustomerCategory(admin.ModelAdmin):
+    list_display = ("title", "body")
