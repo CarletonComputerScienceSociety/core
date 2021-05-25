@@ -166,14 +166,14 @@ class SubmissionTestCase(TestCase):
             answer="Yate",
             correct=False,
             question=self.question1,
-            attempts=5
+            attempts=5,
         )
         submission5 = Submission.objects.create(
             email="robertbabaev@cunet.carleton.ca",
             answer="Yate",
             correct=False,
             question=self.question1,
-            attempts=5
+            attempts=5,
         )
         self.assertNotEquals(submission4, None)
         self.assertNotEquals(submission5, None)

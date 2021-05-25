@@ -1,8 +1,8 @@
-
 from django.core.validators import validate_email
 from django.db import models
 
 from .validators import validate_carleton_email
+
 
 class CodeChallengeEvent(models.Model):
     title = models.CharField(max_length=150)
