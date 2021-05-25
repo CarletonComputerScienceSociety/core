@@ -1,5 +1,8 @@
+
+from django.core.validators import validate_email
 from django.db import models
 
+from .validators import validate_carleton_email
 
 class CodeChallengeEvent(models.Model):
     title = models.CharField(max_length=150)
@@ -61,6 +64,11 @@ class Submission(models.Model):
         Question, on_delete=models.CASCADE, blank=True, null=True
     )
     attempts = models.IntegerField(default=0)
+
+    def save(self, *args, **kwargs):
+        validate_email(self.email)
+        validate_carleton_email(self.email)
+        super(Submission, self).save(*args, **kwargs)
 
     class Meta:
         unique_together = (
