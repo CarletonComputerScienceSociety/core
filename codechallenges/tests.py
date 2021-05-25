@@ -1,6 +1,6 @@
 from django.test import TestCase
 from rest_framework.test import APIRequestFactory
-from codechallenges.models import Category, Question, Submission
+from codechallenges.models import Author, Category, Question, Submission
 from .views import SubmissionList
 
 import datetime
@@ -15,6 +15,12 @@ class QuestionTestCase(TestCase):
         )
         self.category2 = Category.objects.create(
             title="Cryptography", body="KEY IS KEY"
+        )
+        self.author1 = Author.objects.create(
+            firstname="John", lastname="Wick"
+        )
+        self.author2 = Author.objects.create(
+            firstname="Doom", lastname="Guy"
         )
         self.question1 = Question.objects.create(
             title="Yeet",
@@ -41,6 +47,12 @@ class QuestionTestCase(TestCase):
         self.question1.categories.add(self.category2)  # Added
         self.question2.categories.add(self.category1)  # Not Added
         self.assertEquals(len(self.question1.categories.all()), 2)
+
+    def test_authors(self):
+        self.question1.authors.add(self.author1)  # Added
+        self.question1.authors.add(self.author2)  # Added
+        self.question2.authors.add(self.author1)  # Not Added
+        self.assertEquals(len(self.question1.authors.all()), 2)
 
 
 class SubmissionTestCase(TestCase):
