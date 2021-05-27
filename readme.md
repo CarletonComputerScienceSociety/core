@@ -47,6 +47,10 @@ virtualenv venv -p python3
 source venv/bin/activate
 ```
 
+```For windows
+venv\Scripts\activate
+```
+
 You will also need to know how to deactivate your virtual environment later, which can be done by running the following:
 
 ```bash
