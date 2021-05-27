@@ -43,11 +43,13 @@ virtualenv venv -p python3
 
 ### 2. Activate virtual environment
 
+For unix
 ```bash
 source venv/bin/activate
 ```
 
-```For windows
+For windows
+```bash
 venv\Scripts\activate
 ```
 
