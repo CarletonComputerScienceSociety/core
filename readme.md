@@ -95,10 +95,15 @@ DATABASES = {
 
 ### 5. Configure Django Environment Settings
 
+For unix
 ```bash
 export DJANGO_SETTINGS_MODULE=core.settings.dev
 ```
 
+For windows
+```bash
+set DJANGO_SETTINGS_MODULE=core.settings.dev
+```
 ### 6. Migrate Database
 
 ```bash
