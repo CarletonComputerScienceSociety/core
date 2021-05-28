@@ -35,9 +35,13 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
 ]
 
+CORS_ORIGIN_ALLOW_ALL=True
+
+CORS_ORIGIN_WHITELIST = [
+    "http://127.0.0.1"
+]
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -49,9 +53,11 @@ INSTALLED_APPS = [
     "resources",
     "rest_framework",
     "django_celery_beat",
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
