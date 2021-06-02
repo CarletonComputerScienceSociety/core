@@ -43,8 +43,14 @@ virtualenv venv -p python3
 
 ### 2. Activate virtual environment
 
+For unix
 ```bash
 source venv/bin/activate
+```
+
+For windows
+```bash
+venv\Scripts\activate
 ```
 
 You will also need to know how to deactivate your virtual environment later, which can be done by running the following:
@@ -89,10 +95,15 @@ DATABASES = {
 
 ### 5. Configure Django Environment Settings
 
+For unix
 ```bash
 export DJANGO_SETTINGS_MODULE=core.settings.dev
 ```
 
+For windows
+```bash
+set DJANGO_SETTINGS_MODULE=core.settings.dev
+```
 ### 6. Migrate Database
 
 ```bash
