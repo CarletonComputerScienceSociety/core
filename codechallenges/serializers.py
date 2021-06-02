@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from codechallenges.models import Question, Submission, Category
+from codechallenges.models import Author, Question, Submission, Category
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -8,8 +8,15 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ["title"]
 
 
+class AuthorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Author
+        fields = ["firstname", "lastname"]
+
+
 class QuestionSerializer(serializers.ModelSerializer):
     categories = CategorySerializer(many=True, required=False)
+    authors = AuthorSerializer(many=True, required=False)
 
     class Meta:
         model = Question
@@ -22,6 +29,7 @@ class QuestionSerializer(serializers.ModelSerializer):
             "expiration_date",
             "difficulty",
             "categories",
+            "authors",
         )
 
 
@@ -38,6 +46,7 @@ class QuestionHiddenSerializer(serializers.ModelSerializer):
             "expiration_date",
             "difficulty",
             "categories",
+            "authors",
         )
 
 

@@ -21,6 +21,12 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+class Author(models.Model):
+    firstname = models.CharField(max_length=64)
+    lastname = models.CharField(max_length=64)
+
+    def __str__(self):
+        return f"{self.firstname} {self.lastname}"
 
 class Question(models.Model):
     title = models.CharField(max_length=150)
@@ -50,7 +56,8 @@ class Question(models.Model):
         CodeChallengeEvent, on_delete=models.CASCADE, blank=True, null=True
     )
 
-    categories = models.ManyToManyField(Category, blank=True)
+    categories = models.ManyToManyField(Category)
+    authors = models.ManyToManyField(Author)
 
     def __str__(self):
         return self.title
