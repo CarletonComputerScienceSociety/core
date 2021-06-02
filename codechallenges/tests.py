@@ -104,7 +104,7 @@ class SubmissionTestCase(TestCase):
         self.assertNotEquals(self.question1, None)
 
         submission1 = Submission.objects.create(
-            email="test123@gmail.com",
+            email="test123@cmail.carleton.ca",
             answer="Yote",
             correct=True,
             question=self.question1,
@@ -116,7 +116,7 @@ class SubmissionTestCase(TestCase):
 
         # This should pass because it's not a dupe!
         submission2 = Submission.objects.create(
-            email="test124@gmail.com",
+            email="test124@cmail.carleton.ca",
             answer="Y0te",
             correct=False,
             question=self.question1,
@@ -129,9 +129,51 @@ class SubmissionTestCase(TestCase):
         # This should fail due to duplicate checking
         with self.assertRaises(Exception):
             submission3 = Submission.objects.create(
-                email="test123@gmail.com",
+                email="test123@cmail.carleton.ca",
                 answer="Yate",
                 correct=False,
                 question=self.question1,
                 attempts=5,
             )
+
+    def test_validate_email(self):
+        with self.assertRaises(Exception):
+            submission1 = Submission.objects.create(
+                email="test1@gmail.com",
+                answer="Yate",
+                correct=False,
+                question=self.question1,
+                attempts=5,
+            )
+        with self.assertRaises(Exception):
+            submission2 = Submission.objects.create(
+                email="carleton.ca",
+                answer="Yate",
+                correct=False,
+                question=self.question1,
+                attempts=5,
+            )
+        with self.assertRaises(Exception):
+            submission3 = Submission.objects.create(
+                email="robert@carleton.ca",
+                answer="Yate",
+                correct=False,
+                question=self.question1,
+                attempts=5,
+            )
+        submission4 = Submission.objects.create(
+            email="robertbabaev@cmail.carleton.ca",
+            answer="Yate",
+            correct=False,
+            question=self.question1,
+            attempts=5,
+        )
+        submission5 = Submission.objects.create(
+            email="robertbabaev@cunet.carleton.ca",
+            answer="Yate",
+            correct=False,
+            question=self.question1,
+            attempts=5,
+        )
+        self.assertNotEquals(submission4, None)
+        self.assertNotEquals(submission5, None)
