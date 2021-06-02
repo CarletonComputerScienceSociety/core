@@ -5,7 +5,8 @@ import re
 
 
 def validate_carleton_email(value):
-    search = re.findall("(cmail|cunet)\.carleton\.ca", value)
+    search = re.findall(r"(cmail|cunet)\.carleton\.ca", value)
+    print(search)
     if len(search) != 1:
         raise ValidationError(
             _("Invalid email domain, must be carleton.ca email."), status="invalid"
