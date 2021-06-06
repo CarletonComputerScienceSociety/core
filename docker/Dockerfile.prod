@@ -7,5 +7,5 @@ COPY . /code/
 
 RUN pip install -r requirements.txt \
     && chmod +x docker/start-celery.sh
-    
+
 ENTRYPOINT [ "/code/start-prod.sh" ]
