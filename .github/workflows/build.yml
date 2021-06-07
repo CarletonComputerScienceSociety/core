@@ -27,4 +27,4 @@ jobs:
           context: .
           file: docker/Dockerfile.prod
           push: true
-          tags: carletoncomputersciencesociety/core:latest
+          tags: ghcr.io/carletoncomputersciencesociety/core:latest
