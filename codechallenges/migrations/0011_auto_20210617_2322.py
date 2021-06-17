@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('codechallenges', '0010_merge_20210602_0049'),
+        ("codechallenges", "0010_merge_20210602_0049"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='question',
-            name='authors',
-            field=models.ManyToManyField(blank=True, to='codechallenges.Author'),
+            model_name="question",
+            name="authors",
+            field=models.ManyToManyField(blank=True, to="codechallenges.Author"),
         ),
     ]

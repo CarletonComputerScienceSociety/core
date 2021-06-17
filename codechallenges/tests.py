@@ -16,12 +16,8 @@ class QuestionTestCase(TestCase):
         self.category2 = Category.objects.create(
             title="Cryptography", body="KEY IS KEY"
         )
-        self.author1 = Author.objects.create(
-            firstname="John", lastname="Wick"
-        )
-        self.author2 = Author.objects.create(
-            firstname="Doom", lastname="Guy"
-        )
+        self.author1 = Author.objects.create(firstname="John", lastname="Wick")
+        self.author2 = Author.objects.create(firstname="Doom", lastname="Guy")
         self.question1 = Question.objects.create(
             title="Yeet",
             body="Blaghjdklahgjfkl",
