@@ -33,9 +33,9 @@ class Question(models.Model):
     body = models.TextField()
     format = models.CharField(
         choices=(
-            ("t", "text"),
-            ("h", "html"),
-            ("m", "mathjax"),
+            ("text", "text"),
+            ("html", "html"),
+            ("mathjax", "mathjax"),
         ),
         max_length=1,
     )
@@ -44,9 +44,9 @@ class Question(models.Model):
     expiration_date = models.DateField()
     difficulty = models.CharField(
         choices=(
-            ("e", "easy"),
-            ("m", "medium"),
-            ("h", "hard"),
+            ("easy", "easy"),
+            ("medium", "medium"),
+            ("hard", "hard"),
         ),
         max_length=1,
         null=True,
