@@ -56,8 +56,8 @@ class Question(models.Model):
         CodeChallengeEvent, on_delete=models.CASCADE, blank=True, null=True
     )
 
-    categories = models.ManyToManyField(Category)
-    authors = models.ManyToManyField(Author)
+    categories = models.ManyToManyField(Category, blank=True)
+    authors = models.ManyToManyField(Author, blank=True)
 
     def __str__(self):
         return self.title
