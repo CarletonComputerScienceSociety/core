@@ -37,7 +37,7 @@ class Question(models.Model):
             ("html", "html"),
             ("mathjax", "mathjax"),
         ),
-        max_length=1,
+        max_length=10,
     )
     answer = models.CharField(max_length=150)
     release_date = models.DateField()
@@ -48,7 +48,7 @@ class Question(models.Model):
             ("medium", "medium"),
             ("hard", "hard"),
         ),
-        max_length=1,
+        max_length=10,
         null=True,
         blank=True,
     )
