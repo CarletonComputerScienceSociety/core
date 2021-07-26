@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_celery_beat",
     "corsheaders",
+    "drf_yasg"
 ]
 
 MIDDLEWARE = [
@@ -162,9 +163,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    "DEFAULT_PERMISSION_CLASSES": []
 }
 
 CELERY_IMPORTS = "core.tasks"
