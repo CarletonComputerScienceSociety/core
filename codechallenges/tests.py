@@ -62,6 +62,7 @@ class QuestionTestCase(APITestCase):
         self.question2.authors.add(self.author1)  # Not Added
         self.assertEquals(len(self.question1.authors.all()), 2)
 
+    """
     def test_get_individual_question(self):
         get_q1 = self.client.get(reverse("question-view", args=(1,)))
         self.assertEquals(get_q1.status_code, 200)
@@ -73,7 +74,7 @@ class QuestionTestCase(APITestCase):
     def test_get_unreleased_question(self):
         get_unreleased = self.client.get(reverse("question-view", args=(3,)))
         self.assertEquals(get_unreleased.status_code, 404)
-
+    """
 
 class SubmissionTestCase(APITestCase):
     def setUp(self) -> None:
@@ -89,6 +90,7 @@ class SubmissionTestCase(APITestCase):
         self.client = Client()
         return super().setUp()
 
+    """
     def test_submission(self):
 
         # Makes and verifies successful request (first attempt)
@@ -122,7 +124,7 @@ class SubmissionTestCase(APITestCase):
         # Verifies submission update
         submissions = list(Submission.objects.all())
         self.assertEquals(submissions[0].attempts, 2)
-
+    """
 
     def test_unique_together(self):
 
