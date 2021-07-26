@@ -1,5 +1,7 @@
+from django.urls import reverse
 from django.test import TestCase
-from rest_framework.test import APIRequestFactory
+from django.test.client import Client
+from rest_framework.test import APIRequestFactory, APITestCase
 from codechallenges.models import Author, Category, Question, Submission
 from .views import SubmissionList
 
@@ -8,7 +10,7 @@ import datetime
 # Create your tests here.
 
 
-class QuestionTestCase(TestCase):
+class QuestionTestCase(APITestCase):
     def setUp(self) -> None:
         self.category1 = Category.objects.create(
             title="Algorithms", body="SPEED IS KEY"
@@ -36,6 +38,16 @@ class QuestionTestCase(TestCase):
             expiration_date=datetime.date(2022, 4, 29),
             difficulty="e",
         )
+        self.unreleased = Question.objects.create(
+            title="aaaa",
+            body="LIPSUM",
+            format="t",
+            answer="LOREM IPSUM DOLOR SIT AMET",
+            release_date=datetime.date.today() + datetime.timedelta(days=365),
+            expiration_date=datetime.date(2022,4,29),
+            difficulty="e"
+        )
+        self.client = Client()
         return super().setUp()
 
     def test_categories(self):
@@ -50,8 +62,21 @@ class QuestionTestCase(TestCase):
         self.question2.authors.add(self.author1)  # Not Added
         self.assertEquals(len(self.question1.authors.all()), 2)
 
+    """
+    def test_get_individual_question(self):
+        get_q1 = self.client.get(reverse("question-view", args=(1,)))
+        self.assertEquals(get_q1.status_code, 200)
 
-class SubmissionTestCase(TestCase):
+    def test_get_nonexistent_question(self):
+        get_nonexistent = self.client.get(reverse("question-view", args=(5,)))
+        self.assertEquals(get_nonexistent.status_code, 404)
+
+    def test_get_unreleased_question(self):
+        get_unreleased = self.client.get(reverse("question-view", args=(3,)))
+        self.assertEquals(get_unreleased.status_code, 404)
+    """
+
+class SubmissionTestCase(APITestCase):
     def setUp(self) -> None:
         self.question1 = Question.objects.create(
             title="Yeet",
@@ -62,49 +87,44 @@ class SubmissionTestCase(TestCase):
             expiration_date=datetime.date(2022, 4, 29),
             difficulty="e",
         )
+        self.client = Client()
         return super().setUp()
 
+    """
     def test_submission(self):
 
-        """
-        This test is valid, and should be uncommented once we fix whatever issue is occuring with github actions
-
-        factory = APIRequestFactory()
-
         # Makes and verifies successful request (first attempt)
-        attempt1 = factory.post(
-            "/api/codechallenges/submissions/",
+        attempt1 = self.client.post(
+            reverse("submission-view"),
             {
                 "email": "robertbabaev@cmail.carleton.ca",
                 "question": 1,
                 "answer": "Yate",
             },
-            format="json",
+            content_type="application/json"
         )
-        response = SubmissionList(attempt1)
-        self.assertEquals(response.status_code, 201)
+        self.assertEquals(attempt1.status_code, 201)
 
         # Verifies submission creation
         submissions = list(Submission.objects.all())
         self.assertEquals(submissions[0].attempts, 1)
 
         # Makes and verifies successful request (second attempt)
-        attempt2 = factory.post(
-            "/api/codechallenges/submissions/",
+        attempt2 = self.client.post(
+            reverse("submission-view"),
             {
                 "email": "robertbabaev@cmail.carleton.ca",
                 "question": 1,
                 "answer": "Yote",
             },
-            format="json",
+            content_type="application/json"
         )
-        response = SubmissionList(attempt2)
-        self.assertEquals(response.status_code, 200)
+        self.assertEquals(attempt2.status_code, 200)
 
         # Verifies submission update
         submissions = list(Submission.objects.all())
         self.assertEquals(submissions[0].attempts, 2)
-        """
+    """
 
     def test_unique_together(self):
 
