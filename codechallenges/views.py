@@ -12,14 +12,12 @@ from .serializers import (
 from datetime import datetime, timedelta
 
 
-class SubmissionList(
-    generics.GenericAPIView
-):
+class SubmissionList(generics.GenericAPIView):
     serializer_class = SubmissionSerializer
     queryset = Submission.objects.all()
 
     def post(self, request):
-        data=request.data
+        data = request.data
         try:
             question = Question.objects.get(pk=data["question"])
         except Question.DoesNotExist:
@@ -58,19 +56,13 @@ class SubmissionList(
         return Response(data=serializer.errors, status=400)
 
 
-class QuestionList(
-    generics.ListAPIView
-):
+class QuestionList(generics.ListAPIView):
 
-    queryset = Question.objects.filter(
-        release_date__lte=datetime.date(datetime.now())
-    )
+    queryset = Question.objects.filter(release_date__lte=datetime.date(datetime.now()))
     serializer_class = QuestionHiddenSerializer
 
 
-class CurrentQuestionList(
-    generics.ListAPIView
-):
+class CurrentQuestionList(generics.ListAPIView):
 
     queryset = Question.objects.filter(
         release_date__lte=datetime.date(datetime.now()),
@@ -79,9 +71,7 @@ class CurrentQuestionList(
     serializer_class = QuestionHiddenSerializer
 
 
-class ExpiredQuestionList(
-    generics.ListAPIView
-):
+class ExpiredQuestionList(generics.ListAPIView):
 
     queryset = Question.objects.filter(
         release_date__lte=datetime.date(datetime.now()),
@@ -90,11 +80,7 @@ class ExpiredQuestionList(
     serializer_class = QuestionSerializer
 
 
-class QuestionDetails(
-    generics.RetrieveAPIView
-):
+class QuestionDetails(generics.RetrieveAPIView):
 
-    queryset = Question.objects.filter(
-        release_date__lte=datetime.date(datetime.now())
-    )
+    queryset = Question.objects.filter(release_date__lte=datetime.date(datetime.now()))
     serializer_class = QuestionHiddenSerializer
