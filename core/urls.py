@@ -30,17 +30,26 @@ schema_view = get_schema_view(
         terms_of_service="https://whereverthehecc.com",
     ),
     public=True,
-    permission_classes=(permissions.AllowAny,)
+    permission_classes=(permissions.AllowAny,),
 )
 
 urlpatterns = [
     # path('', views.home, name='home'),
     # path('admin/', admin.site.urls),
     # path('', views.index),
-    re_path(r'^swagger(<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    path("swagger/", schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path("redoc/", schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    re_path(
+        r"^swagger(<format>\.json|\.yaml)$",
+        schema_view.without_ui(cache_timeout=0),
+        name="schema-json",
+    ),
+    path(
+        "swagger/",
+        schema_view.with_ui("swagger", cache_timeout=0),
+        name="schema-swagger-ui",
+    ),
+    path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
     path("api/resources/", include("resources.urls")),
     path("api/codechallenges/", include("codechallenges.urls")),
+    path("api/polls/", include("polls.urls")),
     path("admin/", admin.site.urls),
 ]

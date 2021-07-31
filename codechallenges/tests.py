@@ -44,8 +44,8 @@ class QuestionTestCase(APITestCase):
             format="t",
             answer="LOREM IPSUM DOLOR SIT AMET",
             release_date=datetime.date.today() + datetime.timedelta(days=365),
-            expiration_date=datetime.date(2022,4,29),
-            difficulty="e"
+            expiration_date=datetime.date(2022, 4, 29),
+            difficulty="e",
         )
         self.client = Client()
         return super().setUp()
@@ -75,6 +75,7 @@ class QuestionTestCase(APITestCase):
         get_unreleased = self.client.get(reverse("question-view", args=(3,)))
         self.assertEquals(get_unreleased.status_code, 404)
     """
+
 
 class SubmissionTestCase(APITestCase):
     def setUp(self) -> None:
