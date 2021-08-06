@@ -11,3 +11,8 @@ from datetime import datetime, timedelta
 class PollList(generics.ListAPIView):
     queryset = Poll.objects.filter()
     serializer_class = PollSerializer
+
+
+class PollDetails(generics.RetrieveAPIView):
+    queryset = Poll.objects.filter()
+    serializer_class = PollSerializer
