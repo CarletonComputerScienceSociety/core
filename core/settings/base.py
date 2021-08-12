@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -169,3 +172,15 @@ REST_FRAMEWORK = {
 }
 
 CELERY_IMPORTS = "core.tasks"
+
+# S3 configuration
+ACCESS_KEY = str(os.getenv("ACCESS_KEY"))
+SECRET_KEY = str(os.getenv("SECRET_KEY"))
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+AWS_S3_ENDPOINT_URL = "http://minio.discretemath.ca/"
+AWS_ACCESS_KEY_ID = os.environ.get("ACCESS_KEY", "access-key")
+DEBUG = bool(os.environ.get("DJANGO_DEBUG", True))
+AWS_SECRET_ACCESS_KEY = os.environ.get("SECRET_KEY", "secret-key")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME", "core")
