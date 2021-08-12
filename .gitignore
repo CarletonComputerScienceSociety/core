@@ -4,3 +4,4 @@ backups
 .ds_store
 core/staticfiles
 venv
+.env
