@@ -61,6 +61,7 @@ class Question(models.Model):
     categories = models.ManyToManyField(Category, blank=True)
     authors = models.ManyToManyField(Author, blank=True)
     image = models.ImageField(upload_to="questions", null=True, blank=True)
+
     def __str__(self):
         return self.title
 
