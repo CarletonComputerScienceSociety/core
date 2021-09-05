@@ -1,4 +1,5 @@
 from django.http import HttpResponse, JsonResponse
+from django.core.exceptions import ValidationError
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
@@ -18,10 +19,15 @@ class SubmissionList(generics.GenericAPIView):
 
     def post(self, request):
         data = request.data
+        print(data)
+        print(data["question"])
         try:
             question = Question.objects.get(pk=data["question"])
         except Question.DoesNotExist:
-            return HttpResponse(status=500)
+            return Response(
+                {"data": {}, "errors": "Invalid ID"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
 
         # Need to check if submission exists before creating one
         try:
@@ -40,7 +46,9 @@ class SubmissionList(generics.GenericAPIView):
 
             serializer = SubmissionSerializer(submission)
 
-            return Response(data=serializer.data, status=200)
+            return Response(
+                {"data": serializer.data, "errors": {}}, status=status.HTTP_200_OK
+            )
         except Submission.DoesNotExist:
             data["attempts"] = 1
 
@@ -50,10 +58,22 @@ class SubmissionList(generics.GenericAPIView):
             data["correct"] = False
 
         serializer = SubmissionSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(data=serializer.data, status=201)
-        return Response(data=serializer.errors, status=400)
+        try:
+            if serializer.is_valid():
+                serializer.save()
+                return Response(
+                    {"data": serializer.data, "errors": {}},
+                    status=status.HTTP_201_CREATED,
+                )
+        except ValidationError:
+            return Response(
+                {"data": {}, "errors": "Invalid Email."},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+        return Response(
+            {"data": serializer.data, "errors": "Invalid Input."},
+            status=status.HTTP_200_OK,
+        )
 
 
 class QuestionList(generics.ListAPIView):

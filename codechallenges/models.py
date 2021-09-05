@@ -32,6 +32,7 @@ class Author(models.Model):
 
 class Question(models.Model):
     title = models.CharField(max_length=150)
+    preview = models.TextField()
     body = models.TextField()
     format = models.CharField(
         choices=(
@@ -76,7 +77,7 @@ class Submission(models.Model):
 
     def save(self, *args, **kwargs):
         validate_email(self.email)
-        validate_carleton_email(self.email)
+        # validate_carleton_email(self.email)
         super(Submission, self).save(*args, **kwargs)
 
     class Meta:
