@@ -21,7 +21,9 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = (
+            "id",
             "title",
+            "preview",
             "body",
             "format",
             "answer",
@@ -39,7 +41,9 @@ class QuestionHiddenSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = (
+            "id",
             "title",
+            "preview",
             "body",
             "format",
             "release_date",
