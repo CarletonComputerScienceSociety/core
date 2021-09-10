@@ -13,7 +13,7 @@ ALLOWED_HOSTS = ["core.carletoncomputerscience.ca", "localhost"]
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "code-project",
+        "NAME": "code_project",
         "USER": "postgres",
         "PASSWORD": "1234",
         "HOST": "localhost",

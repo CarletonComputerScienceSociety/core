@@ -6,7 +6,7 @@ while True:
     try:
         conn = psycopg2.connect(
             host="localhost",
-            database="code-project",
+            database="code_project",
             user="postgres",
             password="1234"
         )
