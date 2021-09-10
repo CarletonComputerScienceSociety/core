@@ -27,4 +27,4 @@ jobs:
           context: .
           file: docker/Dockerfile.prod
           push: true
-          tags: ghcr.io/carletoncomputersciencesociety/core:latest
+          tags: ghcr.io/carletoncomputersciencesociety/core/code-challenge-django:latest
