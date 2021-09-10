@@ -4,8 +4,8 @@ export DJANGO_SETTINGS_MODULE=core.settings.prod
 
 cd /code
 
-echo "Waiting for database"
 # Wait for the database to be ready
+echo "Waiting for database"
 python /code/docker/wait.py
 
 echo "Migrating"
@@ -15,9 +15,7 @@ echo "Collecting static files"
 python manage.py collectstatic --noinput
 
 echo "Starting server"
-python manage.py runserver 0.0.0.0:8000
-
-# gunicorn \
-#     -w 2 \
-#     -b 0.0.0.0:8000 \
-#     core.wsgi:application
+gunicorn \
+    -w 3 \
+    -b 0.0.0.0:8000 \
+    core.wsgi:application
