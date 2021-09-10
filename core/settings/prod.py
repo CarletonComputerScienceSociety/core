@@ -5,7 +5,7 @@ import sentry_sdk
 from .base import *
 SECRET_KEY = get_random_secret_key()
 
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ["core.carletoncomputerscience.ca", "localhost"]
