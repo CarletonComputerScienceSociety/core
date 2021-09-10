@@ -4,8 +4,9 @@ export DJANGO_SETTINGS_MODULE=core.settings.prod
 
 cd /code
 
+echo "Waiting for database"
 # Wait for the database to be ready
-$(python /code/docker/wait.py)
+python /code/docker/wait.py
 
 echo "Migrating"
 python manage.py migrate
