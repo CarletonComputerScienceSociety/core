@@ -10,4 +10,4 @@ python manage.py collectstatic --noinput
 gunicorn \
     -w 2 \
     -b 0.0.0.0:8000 \
-    api.wsgi:application
+    core.wsgi:application
