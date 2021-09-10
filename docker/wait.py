@@ -10,6 +10,7 @@ while True:
             user="postgres",
             password="1234"
         )
+        print("Connected to database!")
         break
     except:
         print("Waiting for database...")
