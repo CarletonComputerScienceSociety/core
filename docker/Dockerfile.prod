@@ -6,4 +6,4 @@ COPY . /code/
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT [ "/code/start-prod.sh" ]
+ENTRYPOINT [ "/code/docker/start-prod.sh" ]
