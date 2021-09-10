@@ -5,10 +5,10 @@ import sentry_sdk
 from .base import *
 SECRET_KEY = get_random_secret_key()
 
-DEBUG = True
+DEBUG = False
 
 
-ALLOWED_HOSTS = ["core.carletoncomputerscience.ca", "localhost"]
+ALLOWED_HOSTS = ["core.carletoncomputersciencesociety.ca", "localhost"]
 
 DATABASES = {
     "default": {

@@ -13,4 +13,4 @@ while True:
         print("Connected to database!")
         break
     except:
-        print("Waiting for database...")
+        continue
