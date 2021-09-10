@@ -4,6 +4,9 @@ export DJANGO_SETTINGS_MODULE=core.settings.prod
 
 cd /code
 
+# Wait for the database to be ready
+$(python /code/docker/wait.py)
+
 python manage.py migrate
 python manage.py collectstatic --noinput
 
