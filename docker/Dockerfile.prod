@@ -1,11 +1,9 @@
-FROM python:3
+FROM python:3.9
 ENV PYTHONUNBUFFERED=1
 WORKDIR /code
 
-COPY requirements.txt /code/
 COPY . /code/
 
-RUN pip install -r requirements.txt \
-    && chmod +x docker/start-celery.sh
+RUN pip install -r requirements.txt
 
 ENTRYPOINT [ "/code/start-prod.sh" ]
