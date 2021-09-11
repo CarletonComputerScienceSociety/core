@@ -35,6 +35,12 @@ Docker is recommended for application setup due to the high number of services r
 
 ### Non-Docker Setup
 
+### 0. Install virtualenv
+
+```bash
+pip install virtualenv
+```
+
 ### 1. Create virtual environment
 
 ```bash

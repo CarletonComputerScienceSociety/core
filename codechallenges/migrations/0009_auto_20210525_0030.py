@@ -6,21 +6,29 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('codechallenges', '0008_auto_20210522_1942'),
+        ("codechallenges", "0008_auto_20210522_1942"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Author',
+            name="Author",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('firstname', models.CharField(max_length=64)),
-                ('lastname', models.CharField(max_length=64)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("firstname", models.CharField(max_length=64)),
+                ("lastname", models.CharField(max_length=64)),
             ],
         ),
         migrations.AddField(
-            model_name='question',
-            name='authors',
-            field=models.ManyToManyField(to='codechallenges.Author'),
+            model_name="question",
+            name="authors",
+            field=models.ManyToManyField(to="codechallenges.Author"),
         ),
     ]

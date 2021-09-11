@@ -21,6 +21,7 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+
 class Author(models.Model):
     firstname = models.CharField(max_length=64)
     lastname = models.CharField(max_length=64)
@@ -28,27 +29,29 @@ class Author(models.Model):
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
 
+
 class Question(models.Model):
     title = models.CharField(max_length=150)
+    preview = models.TextField()
     body = models.TextField()
     format = models.CharField(
         choices=(
-            ("t", "text"),
-            ("h", "html"),
-            ("m", "mathjax"),
+            ("text", "text"),
+            ("html", "html"),
+            ("mathjax", "mathjax"),
         ),
-        max_length=1,
+        max_length=10,
     )
     answer = models.CharField(max_length=150)
     release_date = models.DateField()
     expiration_date = models.DateField()
     difficulty = models.CharField(
         choices=(
-            ("e", "easy"),
-            ("m", "medium"),
-            ("h", "hard"),
+            ("easy", "easy"),
+            ("medium", "medium"),
+            ("hard", "hard"),
         ),
-        max_length=1,
+        max_length=10,
         null=True,
         blank=True,
     )
@@ -56,8 +59,8 @@ class Question(models.Model):
         CodeChallengeEvent, on_delete=models.CASCADE, blank=True, null=True
     )
 
-    categories = models.ManyToManyField(Category)
-    authors = models.ManyToManyField(Author)
+    categories = models.ManyToManyField(Category, blank=True)
+    authors = models.ManyToManyField(Author, blank=True)
 
     def __str__(self):
         return self.title
@@ -74,7 +77,7 @@ class Submission(models.Model):
 
     def save(self, *args, **kwargs):
         validate_email(self.email)
-        validate_carleton_email(self.email)
+        # validate_carleton_email(self.email)
         super(Submission, self).save(*args, **kwargs)
 
     class Meta:
