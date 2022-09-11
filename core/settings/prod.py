@@ -1,12 +1,15 @@
 from django.core.management.utils import get_random_secret_key
 from sentry_sdk.integrations.django import DjangoIntegration
 import sentry_sdk
+import environ
 
 from .base import *
 SECRET_KEY = get_random_secret_key()
 
-DEBUG = False
+env = environ.Env()
+environ.Env.read_env()
 
+DEBUG = False
 
 ALLOWED_HOSTS = ["core.carletoncomputersciencesociety.ca", "localhost"]
 
@@ -16,8 +19,8 @@ DATABASES = {
         "NAME": "code_project",
         "USER": "postgres",
         "PASSWORD": "1234",
-        "HOST": "localhost",
-        "PORT": 5432,
+        "HOST": env("POSTGRES_HOST"),
+        "PORT": env("POSTGRES_PORT"),
     }
 }
 
