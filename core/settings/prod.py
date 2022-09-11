@@ -19,7 +19,7 @@ DATABASES = {
         "NAME": "code_project",
         "USER": "postgres",
         "PASSWORD": "1234",
-        "HOST": env("POSTGRES_HOST"),
+        "HOST": "localhost",
         "PORT": env("POSTGRES_PORT"),
     }
 }
